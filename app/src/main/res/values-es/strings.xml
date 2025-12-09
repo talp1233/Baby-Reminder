@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Recordatorio de bebé</string>
+
+    <!-- Main Screen -->
+    <string name="driving_status">Estado de conducción</string>
+    <string name="driving_status_active">Activo</string>
+    <string name="driving_status_inactive">Inactivo</string>
+    <string name="bluetooth_list_prompt">agregue los nombres de bluetooth de su automóvil\npara ayudarnos a detectar que está conduciendo</string>
+    <string name="bluetooth_list_button">Lista de Bluetooth</string>
+    <string name="legal_button">Legal</string>
+    <string name="contact_us">Contáctenos:</string>
+    <string name="select_language">Seleccionar idioma</string>
+
+    <!-- Bluetooth Devices Screen -->
+    <string name="bluetooth_devices_title">Dispositivos Bluetooth</string>
+    <string name="add_bluetooth_device_label">Agregar nombre de dispositivo bluetooth</string>
+    <string name="add_button">Agregar</string>
+    <string name="back_button_description">Atrás</string>
+    <string name="remove_device_description">Quitar dispositivo</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">Legal</string>
+    <string name="terms_of_use_button">Términos de uso</string>
+    <string name="privacy_policy_button">Política de privacidad</string>
+    <string name="disclaimer_button">Descargo de responsabilidad</string>
+
+    <!-- Legal Details Screens -->
+    <string name="terms_of_use_title">Términos de uso</string>
+    <string name="privacy_policy_title">Política de privacidad</string>
+    <string name="disclaimer_title">Descargo de responsabilidad</string>
+    <string name="terms_of_use_content">La información sobre los términos de uso estará aquí.</string>
+    <string name="privacy_policy_content">La información de la política de privacidad estará aquí.</string>
+    <string name="disclaimer_content">La información de exención de responsabilidad estará aquí.</string>
+
+    <!-- Notifications -->
+    <string name="start_driving_notification_title">¿Están los niños en el coche?</string>
+    <string name="start_driving_notification_text">Seleccione una respuesta o la aplicación cambiará a la acción predeterminada.</string>
+    <string name="end_driving_notification_title">¿Sacaste a los niños del coche?</string>
+    <string name="notification_action_yes">Sí, los niños están en el coche</string>
+    <string name="notification_action_no">No</string>
+    <string name="notification_action_confirm_yes">Sí</string>
+
+    <!-- Permissions -->
+    <string name="permission_needed">Se requiere permiso</string>
+    <string name="permission_needed_text">Toque para permitir recordatorios repetidos.</string>
+    <string name="permission_needed_big_text">Para asegurarse de que los recordatorios funcionen correctamente, la aplicación necesita el permiso de \'Alarmas y recordatorios\'. Toque aquí para abrir la configuración.</string>
+
+</resources>

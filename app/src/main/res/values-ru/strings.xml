@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Напоминание о ребенке</string>
+
+    <!-- Main Screen -->
+    <string name="driving_status">Статус вождения</string>
+    <string name="driving_status_active">Активно</string>
+    <string name="driving_status_inactive">Неактивно</string>
+    <string name="bluetooth_list_prompt">пожалуйста, добавьте имена Bluetooth вашего автомобиля,\nчтобы помочь нам обнаружить, что вы за рулем</string>
+    <string name="bluetooth_list_button">Список Bluetooth</string>
+    <string name="legal_button">Юридическая информация</string>
+    <string name="contact_us">Свяжитесь с нами:</string>
+    <string name="select_language">Выберите язык</string>
+
+    <!-- Bluetooth Devices Screen -->
+    <string name="bluetooth_devices_title">Устройства Bluetooth</string>
+    <string name="add_bluetooth_device_label">Добавить имя устройства Bluetooth</string>
+    <string name="add_button">Добавить</string>
+    <string name="back_button_description">Назад</string>
+    <string name="remove_device_description">Удалить устройство</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">Юридическая информация</string>
+    <string name="terms_of_use_button">Условия использования</string>
+    <string name="privacy_policy_button">Политика конфиденциальности</string>
+    <string name="disclaimer_button">Отказ от ответственности</string>
+
+    <!-- Legal Details Screens -->
+    <string name="terms_of_use_title">Условия использования</string>
+    <string name="privacy_policy_title">Политика конфиденциальности</string>
+    <string name="disclaimer_title">Отказ от ответственности</string>
+    <string name="terms_of_use_content">Информация об условиях использования будет здесь.</string>
+    <string name="privacy_policy_content">Информация о политике конфиденциальности будет здесь.</string>
+    <string name="disclaimer_content">Информация об отказе от ответственности будет здесь.</string>
+
+    <!-- Notifications -->
+    <string name="start_driving_notification_title">Дети в машине?</string>
+    <string name="start_driving_notification_text">Выберите ответ, или приложение переключится на действие по умолчанию.</string>
+    <string name="end_driving_notification_title">Вы вытащили детей из машины?</string>
+    <string name="notification_action_yes">Да, дети в машине</string>
+    <string name="notification_action_no">Нет</string>
+    <string name="notification_action_confirm_yes">Да</string>
+
+    <!-- Permissions -->
+    <string name="permission_needed">Требуется разрешение</string>
+    <string name="permission_needed_text">Нажмите, чтобы разрешить повторяющиеся напоминания.</string>
+    <string name="permission_needed_big_text">Чтобы напоминания работали правильно, приложению требуется разрешение \'Будильники и напоминания\'. Нажмите здесь, чтобы открыть настройки.</string>
+
+</resources>

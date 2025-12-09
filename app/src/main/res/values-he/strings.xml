@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">תזכורת לתינוק</string>
+
+    <!-- Main Screen -->
+    <string name="driving_status">מצב נהיגה</string>
+    <string name="driving_status_active">פעיל</string>
+    <string name="driving_status_inactive">לא פעיל</string>
+    <string name="bluetooth_list_prompt">אנא הוסף את שמות הבלוטות של הרכב שלך\nכדי לעזור לנו לזהות שאתה נוהג</string>
+    <string name="bluetooth_list_button">רשימת בלוטות</string>
+    <string name="legal_button">מידע משפטי</string>
+    <string name="contact_us">צור קשר:</string>
+    <string name="select_language">בחר שפה</string>
+
+    <!-- Bluetooth Devices Screen -->
+    <string name="bluetooth_devices_title">התקני בלוטות</string>
+    <string name="add_bluetooth_device_label">הוסף שם התקן בלוטות</string>
+    <string name="add_button">הוסף</string>
+    <string name="back_button_description">חזור</string>
+    <string name="remove_device_description">הסר התקן</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">מידע משפטי</string>
+    <string name="terms_of_use_button">תנאי שימוש</string>
+    <string name="privacy_policy_button">מדיניות פרטיות</string>
+    <string name="disclaimer_button">כתב ויתור</string>
+
+    <!-- Legal Details Screens -->
+    <string name="terms_of_use_title">תנאי שימוש</string>
+    <string name="privacy_policy_title">מדיניות פרטיות</string>
+    <string name="disclaimer_title">כתב ויתור</string>
+    <string name="terms_of_use_content">מידע על תנאי השימוש יוצג כאן.</string>
+    <string name="privacy_policy_content">מידע על מדיניות הפרטיות יוצג כאן.</string>
+    <string name="disclaimer_content">מידע על כתב הוויתור יוצג כאן.</string>
+
+    <!-- Notifications -->
+    <string name="start_driving_notification_title">האם הילדים ברכב?</string>
+    <string name="start_driving_notification_text">בחר/י תשובה או שהאפליקציה תעבור לפעולת ברירת המחדל.</string>
+    <string name="end_driving_notification_title">הוצאת את הילדים מהרכב?</string>
+    <string name="notification_action_yes">כן, הילדים ברכב</string>
+    <string name="notification_action_no">לא</string>
+    <string name="notification_action_confirm_yes">כן</string>
+
+    <!-- Permissions -->
+    <string name="permission_needed">נדרשת הרשאה</string>
+    <string name="permission_needed_text">הקש כדי לאפשר תזכורות חוזרות.</string>
+    <string name="permission_needed_big_text">כדי להבטיח שהתזכורות יעבדו כראוי, האפליקציה זקוקה להרשאת \'התראות ותזכורות\'. הקש כאן כדי לפתוח את ההגדרות.</string>
+
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تذكير الطفل</string>
+
+    <!-- Main Screen -->
+    <string name="driving_status">حالة القيادة</string>
+    <string name="driving_status_active">نشط</string>
+    <string name="driving_status_inactive">غير نشط</string>
+    <string name="bluetooth_list_prompt">يرجى إضافة أسماء بلوتوث سيارتك\nلمساعدتنا في اكتشاف قيادتك للسيارة</string>
+    <string name="bluetooth_list_button">قائمة البلوتوث</string>
+    <string name="legal_button">قانوني</string>
+    <string name="contact_us">اتصل بنا:</string>
+    <string name="select_language">اختار اللغة</string>
+
+    <!-- Bluetooth Devices Screen -->
+    <string name="bluetooth_devices_title">أجهزة البلوتوث</string>
+    <string name="add_bluetooth_device_label">أضف اسم جهاز بلوتوث</string>
+    <string name="add_button">أضف</string>
+    <string name="back_button_description">خلف</string>
+    <string name="remove_device_description">إزالة الجهاز</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">قانوني</string>
+    <string name="terms_of_use_button">شروط الاستخدام</string>
+    <string name="privacy_policy_button">سياسة الخصوصية</string>
+    <string name="disclaimer_button">تنصل</string>
+
+    <!-- Legal Details Screens -->
+    <string name="terms_of_use_title">شروط الاستخدام</string>
+    <string name="privacy_policy_title">سياسة الخصوصية</string>
+    <string name="disclaimer_title">تنصل</string>
+    <string name="terms_of_use_content">ستكون معلومات شروط الاستخدام هنا.</string>
+    <string name="privacy_policy_content">ستكون معلومات سياسة الخصوصية هنا.</string>
+    <string name="disclaimer_content">ستكون معلومات إخلاء المسؤولية هنا.</string>
+
+    <!-- Notifications -->
+    <string name="start_driving_notification_title">هل الأطفال في السيارة؟</string>
+    <string name="start_driving_notification_text">حدد إجابة أو سيتحول التطبيق إلى الإجراء الافتراضي.</string>
+    <string name="end_driving_notification_title">هل أخرجت الأطفال من السيارة؟</string>
+    <string name="notification_action_yes">نعم، الأطفال في السيارة</string>
+    <string name="notification_action_no">لا</string>
+    <string name="notification_action_confirm_yes">نعم</string>
+
+    <!-- Permissions -->
+    <string name="permission_needed">الإذن مطلوب</string>
+    <string name="permission_needed_text">انقر للسماح بالتذكيرات المتكررة.</string>
+    <string name="permission_needed_big_text">لضمان عمل التذكيرات بشكل صحيح، يحتاج التطبيق إلى إذن \"الإنذارات والتذكيرات\". انقر هنا لفتح الإعدادات.</string>
+
+</resources>

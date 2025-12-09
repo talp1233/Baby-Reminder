@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Baby Reminder</string>
+
+    <!-- Main Screen -->
+    <string name="driving_status">Driving Status</string>
+    <string name="driving_status_active">Active</string>
+    <string name="driving_status_inactive">Inactive</string>
+    <string name="bluetooth_list_prompt">please add your cars bluetooth names\nto help us detect you driving the car</string>
+    <string name="bluetooth_list_button">Bluetooth List</string>
+    <string name="legal_button">Legal</string>
+    <string name="contact_us">Contact Us:</string>
+    <string name="select_language">Select Language</string>
+
+    <!-- Bluetooth Devices Screen -->
+    <string name="bluetooth_devices_title">Bluetooth Devices</string>
+    <string name="add_bluetooth_device_label">Add bluetooth device name</string>
+    <string name="add_button">Add</string>
+    <string name="back_button_description">Back</string>
+    <string name="remove_device_description">Remove device</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">Legal</string>
+    <string name="terms_of_use_button">Terms of Use</string>
+    <string name="privacy_policy_button">Privacy Policy</string>
+    <string name="disclaimer_button">Disclaimer</string>
+
+    <!-- Legal Details Screens -->
+    <string name="terms_of_use_title">Terms of Use</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="disclaimer_title">Disclaimer</string>
+    <string name="terms_of_use_content">Terms of Use information will be here.</string>
+    <string name="privacy_policy_content">Privacy Policy information will be here.</string>
+    <string name="disclaimer_content">Disclaimer information will be here.</string>
+
+    <!-- Notifications -->
+    <string name="start_driving_notification_title">Are the children in the car?</string>
+    <string name="start_driving_notification_text">Select an answer or the app will switch to the default action.</string>
+    <string name="end_driving_notification_title">Did you take the children out of the car?</string>
+    <string name="notification_action_yes">Yes, the children are in the car</string>
+    <string name="notification_action_no">No</string>
+    <string name="notification_action_confirm_yes">Yes</string>
+
+    <!-- Permissions -->
+    <string name="permission_needed">Permission Required</string>
+    <string name="permission_needed_text">Tap to allow repeating reminders.</string>
+    <string name="permission_needed_big_text">To ensure reminders work correctly, the app needs the \'Alarms &amp; reminders\' permission. Tap here to open settings.</string>
+
+</resources>
