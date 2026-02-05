@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">Напоминание о ребенке</string>
 
+    <!-- Splash Screen -->
+    <string name="splash_tagline">Безопасность ваших малышей</string>
+
     <!-- Main Screen -->
     <string name="driving_status">Статус вождения</string>
     <string name="driving_status_active">Активно</string>

@@ -47,7 +47,16 @@ class MainActivity : ComponentActivity() {
                 val deviceNames by drivingStateDetector.carBluetoothDeviceNames.collectAsState()
                 val currentLanguage = LocaleHelper.getLanguage(this)
 
-                NavHost(navController = navController, startDestination = "main") {
+                NavHost(navController = navController, startDestination = "splash") {
+                    composable("splash") {
+                        SplashScreen(
+                            onSplashComplete = {
+                                navController.navigate("main") {
+                                    popUpTo("splash") { inclusive = true }
+                                }
+                            }
+                        )
+                    }
                     composable("main") {
                         MainScreen(
                             isDriving = isDriving,

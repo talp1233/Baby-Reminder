@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">تذكير الطفل</string>
 
+    <!-- Splash Screen -->
+    <string name="splash_tagline">الحفاظ على سلامة أطفالكم الصغار</string>
+
     <!-- Main Screen -->
     <string name="driving_status">حالة القيادة</string>
     <string name="driving_status_active">نشط</string>

@@ -1,30 +1,58 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
-        <aapt:attr name="android:fillColor">
-            <gradient
-                android:endX="85.84757"
-                android:endY="92.4963"
-                android:startX="42.9492"
-                android:startY="49.59793"
-                android:type="linear">
-                <item
-                    android:color="#44000000"
-                    android:offset="0.0" />
-                <item
-                    android:color="#00000000"
-                    android:offset="1.0" />
-            </gradient>
-        </aapt:attr>
-    </path>
+
+    <!-- Bell body -->
     <path
         android:fillColor="#FFFFFF"
-        android:fillType="nonZero"
-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+        android:pathData="M44,28 C36,32 30,44 30,58 L30,66 C30,70 33,73 37,73 L71,73 C75,73 78,70 78,66 L78,58 C78,44 72,32 64,28 Z" />
+
+    <!-- Bell top knob -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,18 C50.7,18 48,20.7 48,24 C48,27.3 50.7,30 54,30 C57.3,30 60,27.3 60,24 C60,20.7 57.3,18 54,18 Z" />
+
+    <!-- Bell clapper -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,73 C51,73 48.5,75.5 48.5,78.5 C48.5,81.5 51,84 54,84 C57,84 59.5,81.5 59.5,78.5 C59.5,75.5 57,73 54,73 Z" />
+
+    <!-- Baby head -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M54,40 C50,40 47,43 47,47 C47,51 50,54 54,54 C58,54 61,51 61,47 C61,43 58,40 54,40 Z" />
+
+    <!-- Baby eyes (left) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M51,46 a1.2,1.2 0 1,0 2.4,0 a1.2,1.2 0 1,0 -2.4,0 Z" />
+
+    <!-- Baby eyes (right) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M55,46 a1.2,1.2 0 1,0 2.4,0 a1.2,1.2 0 1,0 -2.4,0 Z" />
+
+    <!-- Baby smile -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
         android:strokeWidth="1"
-        android:strokeColor="#00000000" />
+        android:pathData="M51,49.5 Q54,52.5 57,49.5" />
+
+    <!-- Baby body / harness straps -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#3D3D3D"
+        android:strokeWidth="1.5"
+        android:pathData="M48,55 L54,63 L60,55" />
+
+    <!-- Body center line -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#3D3D3D"
+        android:strokeWidth="1.5"
+        android:pathData="M54,54 L54,63" />
+
 </vector>

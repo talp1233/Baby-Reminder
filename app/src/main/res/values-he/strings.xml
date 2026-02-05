@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">תזכורת לתינוק</string>
 
+    <!-- Splash Screen -->
+    <string name="splash_tagline">שומרים על הקטנים שלכם בטוחים</string>
+
     <!-- Main Screen -->
     <string name="driving_status">מצב נהיגה</string>
     <string name="driving_status_active">פעיל</string>

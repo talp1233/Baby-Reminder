@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">Recordatorio de bebé</string>
 
+    <!-- Splash Screen -->
+    <string name="splash_tagline">Protegiendo a tus peque\u00f1os</string>
+
     <!-- Main Screen -->
     <string name="driving_status">Estado de conducción</string>
     <string name="driving_status_active">Activo</string>
