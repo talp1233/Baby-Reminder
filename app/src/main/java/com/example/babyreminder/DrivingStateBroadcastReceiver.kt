@@ -1,6 +1,8 @@
 package com.example.babyreminder
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.app.UiModeManager
 import android.bluetooth.BluetoothDevice
 import android.content.BroadcastReceiver
@@ -9,14 +11,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.util.Log
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class DrivingStateBroadcastReceiver : BroadcastReceiver() {
+
+    companion object {
+        const val ACTION_AUTO_RESPONSE = "com.example.babyreminder.ACTION_AUTO_RESPONSE"
+        private const val AUTO_RESPONSE_DELAY_MS = 10_000L // 10 seconds
+    }
 
     @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
@@ -45,6 +49,14 @@ class DrivingStateBroadcastReceiver : BroadcastReceiver() {
             UiModeManager.ACTION_EXIT_CAR_MODE -> {
                 handleDrivingStop(context, drivingStateDetector, notificationHandler, drivingPrefs)
             }
+
+            ACTION_AUTO_RESPONSE -> {
+                // Fired by AlarmManager after the auto-response delay
+                val responded = drivingPrefs.getBoolean("responded_to_start", false)
+                if (!responded) {
+                    applyDefaultAction(context, drivingPrefs)
+                }
+            }
         }
     }
 
@@ -59,14 +71,21 @@ class DrivingStateBroadcastReceiver : BroadcastReceiver() {
         drivingPrefs.edit().putBoolean("responded_to_start", false).apply()
         notificationHandler.showStartDrivingNotification()
 
-        GlobalScope.launch {
-            delay(10_000) // Wait for 10 seconds
-            val responded = drivingPrefs.getBoolean("responded_to_start", false)
-            if (!responded) {
-                // Logic to apply default action
-                applyDefaultAction(context, drivingPrefs)
-            }
+        // Schedule auto-response via AlarmManager instead of GlobalScope
+        scheduleAutoResponse(context)
+    }
+
+    private fun scheduleAutoResponse(context: Context) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, DrivingStateBroadcastReceiver::class.java).apply {
+            action = ACTION_AUTO_RESPONSE
         }
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, 300, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        val triggerTime = System.currentTimeMillis() + AUTO_RESPONSE_DELAY_MS
+        alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent)
     }
 
     private fun applyDefaultAction(context: Context, drivingPrefs: SharedPreferences) {
@@ -89,7 +108,6 @@ class DrivingStateBroadcastReceiver : BroadcastReceiver() {
 
         val calendar = Calendar.getInstance()
         val dayOfWeek = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US) ?: return false
-        val currentTime = calendar.time
 
         val timeFormat = SimpleDateFormat("HH:mm", Locale.US)
 
@@ -99,8 +117,8 @@ class DrivingStateBroadcastReceiver : BroadcastReceiver() {
                     val startTime = timeFormat.parse(rule.startTime)
                     val endTime = timeFormat.parse(rule.endTime)
 
-                    val calStart = Calendar.getInstance().apply { time = startTime }
-                    val calEnd = Calendar.getInstance().apply { time = endTime }
+                    val calStart = Calendar.getInstance().apply { time = startTime!! }
+                    val calEnd = Calendar.getInstance().apply { time = endTime!! }
 
                     val calNow = Calendar.getInstance().apply {
                         set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY))
@@ -108,11 +126,11 @@ class DrivingStateBroadcastReceiver : BroadcastReceiver() {
                         set(Calendar.SECOND, 0)
                         set(Calendar.MILLISECOND, 0)
                     }
-                    
+
                     // Handle overnight schedules (e.g., 22:00 - 02:00)
                     if (calStart.after(calEnd)) {
                         if (!calNow.before(calStart) || !calNow.after(calEnd)) {
-                            return true // It's between yesterday's start and today's end
+                            return true
                         }
                     } else {
                          if (!calNow.before(calStart) && calNow.before(calEnd)) {

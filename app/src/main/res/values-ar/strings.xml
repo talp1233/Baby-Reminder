@@ -44,6 +44,22 @@
     <string name="notification_action_no">لا</string>
     <string name="notification_action_confirm_yes">نعم</string>
 
+    <!-- Settings Screen -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_enable_sound">تفعيل أصوات الإشعارات</string>
+    <string name="settings_default_action_prompt">ما الإجراء الافتراضي الذي تريده إذا لم ترد على التنبيه الأول؟</string>
+    <string name="settings_scheduled_times_title">الأوقات المجدولة لـ \"نعم\"</string>
+    <string name="settings_delete_rule">حذف القاعدة</string>
+    <string name="settings_add_schedule">إضافة وقت مجدول</string>
+    <string name="settings_add_schedule_title">إضافة جدول</string>
+    <string name="settings_select_days">اختر الأيام:</string>
+    <string name="settings_select_time_range">اختر نطاق الوقت:</string>
+    <string name="settings_save_schedule">حفظ الجدول</string>
+    <string name="settings_start_time">وقت البدء</string>
+    <string name="settings_end_time">وقت الانتهاء</string>
+    <string name="settings_cancel">إلغاء</string>
+    <string name="settings_ok">موافق</string>
+
     <!-- Permissions -->
     <string name="permission_needed">الإذن مطلوب</string>
     <string name="permission_needed_text">انقر للسماح بالتذكيرات المتكررة.</string>

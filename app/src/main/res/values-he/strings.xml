@@ -44,6 +44,22 @@
     <string name="notification_action_no">לא</string>
     <string name="notification_action_confirm_yes">כן</string>
 
+    <!-- Settings Screen -->
+    <string name="settings_title">הגדרות</string>
+    <string name="settings_enable_sound">הפעלת צלילי התראות</string>
+    <string name="settings_default_action_prompt">מה תרצה שתהיה פעולת ברירת המחדל אם לא תגיב להתראה הראשונה?</string>
+    <string name="settings_scheduled_times_title">זמנים מתוזמנים ל\"כן\"</string>
+    <string name="settings_delete_rule">מחק כלל</string>
+    <string name="settings_add_schedule">הוסף זמן מתוזמן</string>
+    <string name="settings_add_schedule_title">הוסף לוח זמנים</string>
+    <string name="settings_select_days">בחר ימים:</string>
+    <string name="settings_select_time_range">בחר טווח שעות:</string>
+    <string name="settings_save_schedule">שמור לוח זמנים</string>
+    <string name="settings_start_time">שעת התחלה</string>
+    <string name="settings_end_time">שעת סיום</string>
+    <string name="settings_cancel">ביטול</string>
+    <string name="settings_ok">אישור</string>
+
     <!-- Permissions -->
     <string name="permission_needed">נדרשת הרשאה</string>
     <string name="permission_needed_text">הקש כדי לאפשר תזכורות חוזרות.</string>

@@ -42,6 +42,7 @@
                 <action android:name="android.app.action.ENTER_CAR_MODE" />
                 <action android:name="android.app.action.EXIT_CAR_MODE" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.example.babyreminder.ACTION_AUTO_RESPONSE" />
             </intent-filter>
         </receiver>
 

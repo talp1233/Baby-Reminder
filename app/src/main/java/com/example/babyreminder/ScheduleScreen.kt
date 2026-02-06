@@ -34,6 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.text.SimpleDateFormat
@@ -61,10 +62,10 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add Schedule", fontSize = 18.sp) },
+                title = { Text(stringResource(R.string.settings_add_schedule_title), fontSize = 18.sp) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button_description))
                     }
                 }
             )
@@ -77,7 +78,7 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Select Days:", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.settings_select_days), style = MaterialTheme.typography.titleSmall)
             Spacer(modifier = Modifier.height(8.dp))
             
             // Days in two rows
@@ -116,7 +117,7 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Text("Select Time Range:", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.settings_select_time_range), style = MaterialTheme.typography.titleSmall)
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround,
@@ -150,7 +151,7 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
                 },
                 enabled = selectedDays.isNotEmpty()
             ) {
-                Text("Save Schedule")
+                Text(stringResource(R.string.settings_save_schedule))
             }
         }
     }
@@ -159,7 +160,7 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
         TimePickerDialog(
             onDismiss = { showStartTimePicker = false },
             onConfirm = { showStartTimePicker = false },
-            title = "Start Time"
+            title = stringResource(R.string.settings_start_time)
         ) {
             TimePicker(state = startTimeState, colors = TimePickerDefaults.colors())
         }
@@ -169,7 +170,7 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
         TimePickerDialog(
             onDismiss = { showEndTimePicker = false },
             onConfirm = { showEndTimePicker = false },
-            title = "End Time"
+            title = stringResource(R.string.settings_end_time)
         ) {
             TimePicker(state = endTimeState, colors = TimePickerDefaults.colors())
         }
@@ -189,9 +190,9 @@ private fun TimePickerDialog(onDismiss: () -> Unit, onConfirm: () -> Unit, title
                 content()
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Spacer(modifier = Modifier.weight(1f))
-                    TextButton(onClick = onDismiss) { Text("Cancel") }
+                    TextButton(onClick = onDismiss) { Text(stringResource(R.string.settings_cancel)) }
                     Spacer(modifier = Modifier.width(8.dp))
-                    TextButton(onClick = onConfirm) { Text("OK") }
+                    TextButton(onClick = onConfirm) { Text(stringResource(R.string.settings_ok)) }
                 }
             }
         }

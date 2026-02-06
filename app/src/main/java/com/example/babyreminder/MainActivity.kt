@@ -26,10 +26,11 @@ class MainActivity : ComponentActivity() {
     }
 
     private val requestBluetoothPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-        if (it) { /* Permission granted, receiver will work. */ } else { /* Handle denial */ }
+        // Permission result handled; receiver will work if granted.
     }
 
     private val requestNotificationPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+        // After notification permission, check Bluetooth permission
         checkBluetoothPermission()
     }
 
@@ -65,17 +66,8 @@ class MainActivity : ComponentActivity() {
                                 LocaleHelper.setLocale(this@MainActivity, it)
                                 this@MainActivity.recreate()
                             },
-                            onNavigateToBluetoothSettings = { navController.navigate("bluetooth") },
                             onNavigateToLegal = { navController.navigate("legal") },
                             onNavigateToSettings = { navController.navigate("settings") }
-                        )
-                    }
-                    composable("bluetooth") {
-                        BluetoothDevicesScreen(
-                            deviceNames = deviceNames,
-                            onAddDevice = { drivingStateDetector.addCarBluetoothDevice(it) },
-                            onRemoveDevice = { drivingStateDetector.removeCarBluetoothDevice(it) },
-                            onNavigateBack = { navController.popBackStack() }
                         )
                     }
                     composable("legal") {
@@ -88,6 +80,9 @@ class MainActivity : ComponentActivity() {
                     }
                     composable("settings") {
                         SettingsScreen(
+                            deviceNames = deviceNames,
+                            onAddDevice = { drivingStateDetector.addCarBluetoothDevice(it) },
+                            onRemoveDevice = { drivingStateDetector.removeCarBluetoothDevice(it) },
                             onNavigateBack = { navController.popBackStack() },
                             onNavigateToAddSchedule = { navController.navigate("schedule") }
                         )
@@ -111,11 +106,27 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun checkBluetoothPermission() {
-        // ... (permission checking logic is unchanged)
+    private fun checkNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            } else {
+                checkBluetoothPermission()
+            }
+        } else {
+            checkBluetoothPermission()
+        }
     }
 
-    private fun checkNotificationPermission() {
-        // ... (permission checking logic is unchanged)
+    private fun checkBluetoothPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestBluetoothPermissionLauncher.launch(Manifest.permission.BLUETOOTH_CONNECT)
+            }
+        }
     }
 }

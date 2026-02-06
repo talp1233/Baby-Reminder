@@ -46,7 +46,6 @@ fun MainScreen(
     isDriving: Boolean,
     currentLanguageCode: String,
     onLanguageSelected: (String) -> Unit,
-    onNavigateToBluetoothSettings: () -> Unit,
     onNavigateToLegal: () -> Unit,
     onNavigateToSettings: () -> Unit,
 ) {
@@ -94,16 +93,16 @@ fun MainScreen(
                     lineHeight = 12.sp
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 Button(
-                    onClick = onNavigateToBluetoothSettings,
+                    onClick = onNavigateToSettings,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(60.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = turquoiseColor)
                 ) {
-                    Text(stringResource(id = R.string.bluetooth_list_button), fontSize = 20.sp)
+                    Text(stringResource(id = R.string.settings_title), fontSize = 20.sp)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -116,18 +115,6 @@ fun MainScreen(
                     colors = ButtonDefaults.buttonColors(containerColor = turquoiseColor)
                 ) {
                     Text(stringResource(id = R.string.legal_button), fontSize = 20.sp)
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Button(
-                    onClick = onNavigateToSettings,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(60.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = turquoiseColor)
-                ) {
-                    Text("Settings", fontSize = 20.sp)
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
@@ -161,9 +148,9 @@ fun MainScreen(
                     languages.forEach { (name, code) ->
                         DropdownMenuItem(
                             text = { Text(name) },
-                            onClick = { 
+                            onClick = {
                                 onLanguageSelected(code)
-                                menuExpanded = false 
+                                menuExpanded = false
                             },
                             trailingIcon = if (currentLanguageCode == code) {
                                 { Icon(Icons.Default.Check, contentDescription = "Selected") }

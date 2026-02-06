@@ -44,6 +44,22 @@
     <string name="notification_action_no">No</string>
     <string name="notification_action_confirm_yes">Yes</string>
 
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_enable_sound">Enable Notification Sounds</string>
+    <string name="settings_default_action_prompt">What would you like to be the default action if you don\'t respond to the first alert?</string>
+    <string name="settings_scheduled_times_title">Scheduled Times for \"Yes\"</string>
+    <string name="settings_delete_rule">Delete Rule</string>
+    <string name="settings_add_schedule">Add Scheduled Time</string>
+    <string name="settings_add_schedule_title">Add Schedule</string>
+    <string name="settings_select_days">Select Days:</string>
+    <string name="settings_select_time_range">Select Time Range:</string>
+    <string name="settings_save_schedule">Save Schedule</string>
+    <string name="settings_start_time">Start Time</string>
+    <string name="settings_end_time">End Time</string>
+    <string name="settings_cancel">Cancel</string>
+    <string name="settings_ok">OK</string>
+
     <!-- Permissions -->
     <string name="permission_needed">Permission Required</string>
     <string name="permission_needed_text">Tap to allow repeating reminders.</string>
