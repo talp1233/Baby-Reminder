@@ -27,6 +27,7 @@ class NotificationHandler(private val context: Context) {
         const val PERMISSION_NOTIFICATION_ID = 3
         const val REPEAT_COUNT_KEY = "repeat_count"
         const val MAX_REPEATS = 10
+        const val REMINDER_INTERVAL_MS = 60_000L // 1 minute
 
         const val ACTION_YES = "com.example.babyreminder.ACTION_YES"
         const val ACTION_NO = "com.example.babyreminder.ACTION_NO"
@@ -97,6 +98,12 @@ class NotificationHandler(private val context: Context) {
         }
 
         val currentRepeats = reminderPrefs.getInt(REPEAT_COUNT_KEY, 0)
+
+        // Stop after MAX_REPEATS
+        if (currentRepeats >= MAX_REPEATS) {
+            return
+        }
+
         val isEmergency = currentRepeats >= MAX_REPEATS - 1
         val channelId = if (isEmergency) EMERGENCY_CHANNEL_ID else DRIVING_CHANNEL_ID
 
@@ -117,15 +124,64 @@ class NotificationHandler(private val context: Context) {
         }
 
         notificationManager.notify(END_DRIVING_NOTIFICATION_ID, builder.build())
-        scheduleReminder()
+
+        // Schedule next reminder if we haven't reached max
+        if (currentRepeats < MAX_REPEATS - 1) {
+            scheduleReminder()
+        }
     }
 
     private fun scheduleReminder() {
-        // ... (code unchanged)
+        val intent = Intent(context, ReminderAlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, 104, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val triggerTime = System.currentTimeMillis() + REMINDER_INTERVAL_MS
+
+        // Use exact alarm if permission is available
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (alarmManager.canScheduleExactAlarms()) {
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent
+                )
+            } else {
+                // Show permission notification and use inexact alarm as fallback
+                showPermissionRequestNotification()
+                alarmManager.setAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent
+                )
+            }
+        } else {
+            alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent
+            )
+        }
     }
 
     private fun showPermissionRequestNotification() {
-       // ... (code unchanged)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            val pendingIntent = PendingIntent.getActivity(
+                context, 200, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+
+            val builder = NotificationCompat.Builder(context, DRIVING_CHANNEL_ID)
+                .setSmallIcon(android.R.drawable.ic_dialog_alert)
+                .setContentTitle(context.getString(R.string.permission_needed))
+                .setContentText(context.getString(R.string.permission_needed_text))
+                .setStyle(NotificationCompat.BigTextStyle()
+                    .bigText(context.getString(R.string.permission_needed_big_text)))
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+
+            notificationManager.notify(PERMISSION_NOTIFICATION_ID, builder.build())
+        }
     }
 
     fun cancelReminder() {

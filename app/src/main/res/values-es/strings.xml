@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">Recordatorio de bebé</string>
 
+    <!-- Splash Screen -->
+    <string name="splash_tagline">Protegiendo a tus peque\u00f1os</string>
+
     <!-- Main Screen -->
     <string name="driving_status">Estado de conducción</string>
     <string name="driving_status_active">Activo</string>
@@ -40,6 +43,22 @@
     <string name="notification_action_yes">Sí, los niños están en el coche</string>
     <string name="notification_action_no">No</string>
     <string name="notification_action_confirm_yes">Sí</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Configuración</string>
+    <string name="settings_enable_sound">Activar sonidos de notificaciones</string>
+    <string name="settings_default_action_prompt">¿Cuál quieres que sea la acción predeterminada si no respondes a la primera alerta?</string>
+    <string name="settings_scheduled_times_title">Horarios programados para \"Sí\"</string>
+    <string name="settings_delete_rule">Eliminar regla</string>
+    <string name="settings_add_schedule">Agregar horario programado</string>
+    <string name="settings_add_schedule_title">Agregar horario</string>
+    <string name="settings_select_days">Seleccionar días:</string>
+    <string name="settings_select_time_range">Seleccionar rango de tiempo:</string>
+    <string name="settings_save_schedule">Guardar horario</string>
+    <string name="settings_start_time">Hora de inicio</string>
+    <string name="settings_end_time">Hora de fin</string>
+    <string name="settings_cancel">Cancelar</string>
+    <string name="settings_ok">Aceptar</string>
 
     <!-- Permissions -->
     <string name="permission_needed">Se requiere permiso</string>

@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">Напоминание о ребенке</string>
 
+    <!-- Splash Screen -->
+    <string name="splash_tagline">Безопасность ваших малышей</string>
+
     <!-- Main Screen -->
     <string name="driving_status">Статус вождения</string>
     <string name="driving_status_active">Активно</string>
@@ -40,6 +43,22 @@
     <string name="notification_action_yes">Да, дети в машине</string>
     <string name="notification_action_no">Нет</string>
     <string name="notification_action_confirm_yes">Да</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_enable_sound">Включить звуки уведомлений</string>
+    <string name="settings_default_action_prompt">Какое действие по умолчанию вы хотите, если не ответите на первое оповещение?</string>
+    <string name="settings_scheduled_times_title">Запланированное время для \"Да\"</string>
+    <string name="settings_delete_rule">Удалить правило</string>
+    <string name="settings_add_schedule">Добавить запланированное время</string>
+    <string name="settings_add_schedule_title">Добавить расписание</string>
+    <string name="settings_select_days">Выберите дни:</string>
+    <string name="settings_select_time_range">Выберите диапазон времени:</string>
+    <string name="settings_save_schedule">Сохранить расписание</string>
+    <string name="settings_start_time">Время начала</string>
+    <string name="settings_end_time">Время окончания</string>
+    <string name="settings_cancel">Отмена</string>
+    <string name="settings_ok">ОК</string>
 
     <!-- Permissions -->
     <string name="permission_needed">Требуется разрешение</string>
