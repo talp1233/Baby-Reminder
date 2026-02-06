@@ -57,6 +57,16 @@ class DrivingStateBroadcastReceiver : BroadcastReceiver() {
                     applyDefaultAction(context, drivingPrefs)
                 }
             }
+
+            Intent.ACTION_BOOT_COMPLETED -> {
+                // Re-initialize driving state after reboot
+                Log.d("DrivingStateReceiver", "Device booted. Resetting driving state.")
+                drivingStateDetector.setDrivingState(false, context)
+                drivingPrefs.edit()
+                    .putBoolean("responded_to_start", false)
+                    .putBoolean("user_denied_session", false)
+                    .apply()
+            }
         }
     }
 
