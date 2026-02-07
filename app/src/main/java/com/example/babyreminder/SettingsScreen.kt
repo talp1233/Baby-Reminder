@@ -1,6 +1,8 @@
 package com.example.babyreminder
 
 import android.content.Context
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,23 +10,34 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Bluetooth
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Divider
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -33,13 +46,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 // Data class to represent a single scheduling rule
 data class ScheduleRule(val id: String, val days: Set<String>, val startTime: String, val endTime: String)
@@ -91,149 +102,260 @@ fun SettingsScreen(
         mainPrefs.edit().putBoolean("default_yes", defaultYes).apply()
     }
 
-    val turquoiseColor = Color(0xFF4DB6AC)
-
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.settings_title), fontSize = 20.sp) },
+                title = {
+                    Text(
+                        stringResource(R.string.settings_title),
+                        fontWeight = FontWeight.SemiBold
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button_description))
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                )
             )
-        }
+        },
+        containerColor = MaterialTheme.colorScheme.background
     ) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
-                .padding(16.dp),
+                .padding(horizontal = 16.dp),
         ) {
             // --- Bluetooth Devices Section ---
             item {
-                Text(
-                    text = stringResource(R.string.bluetooth_devices_title),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
-                )
                 Spacer(modifier = Modifier.height(8.dp))
-            }
-
-            items(deviceNames.toList()) { device ->
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(device, modifier = Modifier.weight(1f))
-                    IconButton(onClick = { onRemoveDevice(device) }) {
-                        Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.remove_device_description))
+                SectionCard {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            Icons.Default.Bluetooth,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(R.string.bluetooth_devices_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
                     }
-                }
-            }
 
-            item {
-                Spacer(modifier = Modifier.height(4.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    TextField(
-                        value = newDeviceName,
-                        onValueChange = { newDeviceName = it },
-                        label = { Text(stringResource(R.string.add_bluetooth_device_label)) },
-                        modifier = Modifier.weight(1f)
-                    )
-                    Button(
-                        onClick = {
-                            if (newDeviceName.isNotBlank()) {
-                                onAddDevice(newDeviceName)
-                                newDeviceName = ""
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    deviceNames.forEach { device ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(MaterialTheme.colorScheme.primary)
+                            )
+                            Spacer(modifier = Modifier.width(12.dp))
+                            Text(
+                                device,
+                                modifier = Modifier.weight(1f),
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                            IconButton(
+                                onClick = { onRemoveDevice(device) },
+                                modifier = Modifier.size(32.dp)
+                            ) {
+                                Icon(
+                                    Icons.Default.Close,
+                                    contentDescription = stringResource(R.string.remove_device_description),
+                                    tint = MaterialTheme.colorScheme.secondary,
+                                    modifier = Modifier.size(18.dp)
+                                )
                             }
-                        },
-                        colors = ButtonDefaults.buttonColors(containerColor = turquoiseColor)
-                    ) {
-                        Text(stringResource(R.string.add_button))
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        OutlinedTextField(
+                            value = newDeviceName,
+                            onValueChange = { v -> newDeviceName = v },
+                            label = { Text(stringResource(R.string.add_bluetooth_device_label)) },
+                            modifier = Modifier.weight(1f),
+                            shape = RoundedCornerShape(12.dp),
+                            singleLine = true
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        FilledTonalButton(
+                            onClick = {
+                                if (newDeviceName.isNotBlank()) {
+                                    onAddDevice(newDeviceName)
+                                    newDeviceName = ""
+                                }
+                            }
+                        ) {
+                            Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_button), modifier = Modifier.size(18.dp))
+                        }
                     }
                 }
-
-                Spacer(modifier = Modifier.height(16.dp))
-                Divider()
-                Spacer(modifier = Modifier.height(16.dp))
             }
 
             // --- Notification Sound Section ---
             item {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(stringResource(R.string.settings_enable_sound), modifier = Modifier.weight(1f))
-                    Switch(checked = enableSound, onCheckedChange = { enableSound = it })
+                Spacer(modifier = Modifier.height(12.dp))
+                SectionCard {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            stringResource(R.string.settings_enable_sound),
+                            modifier = Modifier.weight(1f),
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Switch(
+                            checked = enableSound,
+                            onCheckedChange = { v -> enableSound = v },
+                            colors = SwitchDefaults.colors(
+                                checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                checkedTrackColor = MaterialTheme.colorScheme.primaryContainer
+                            )
+                        )
+                    }
                 }
-                Spacer(modifier = Modifier.height(8.dp))
-                Divider()
-                Spacer(modifier = Modifier.height(8.dp))
             }
 
             // --- Default Action Section ---
             item {
-                Text(
-                    text = stringResource(R.string.settings_default_action_prompt),
-                    textAlign = TextAlign.Center,
-                    fontSize = 11.sp,
-                    lineHeight = 15.sp,
-                    modifier = Modifier.fillMaxWidth()
-                )
+                Spacer(modifier = Modifier.height(12.dp))
+                SectionCard {
+                    Text(
+                        text = stringResource(R.string.settings_default_action_prompt),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
 
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Checkbox(checked = defaultYes, onCheckedChange = { defaultYes = true })
-                    Text(stringResource(R.string.notification_action_yes), fontSize = 8.sp)
-                    Spacer(modifier = Modifier.weight(1f))
-                    Checkbox(checked = !defaultYes, onCheckedChange = { defaultYes = false })
-                    Text(stringResource(R.string.notification_action_no), fontSize = 8.sp)
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(
+                            selected = defaultYes,
+                            onClick = { defaultYes = true },
+                            colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colorScheme.primary)
+                        )
+                        Text(
+                            stringResource(R.string.notification_action_yes),
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(
+                            selected = !defaultYes,
+                            onClick = { defaultYes = false },
+                            colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colorScheme.primary)
+                        )
+                        Text(
+                            stringResource(R.string.notification_action_no),
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
                 }
-
-                Spacer(modifier = Modifier.height(16.dp))
-                Divider()
             }
 
             // --- Schedule Section (only when default is "No") ---
             if (!defaultYes) {
                 item {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = stringResource(R.string.settings_scheduled_times_title),
-                        textAlign = TextAlign.Center,
-                        fontSize = 11.sp,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
+                    SectionCard {
+                        Text(
+                            text = stringResource(R.string.settings_scheduled_times_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
                 }
 
                 items(scheduleRules) { rule ->
-                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(vertical = 2.dp)) {
-                        Text(
-                            text = "${rule.days.joinToString(", ")}: ${rule.startTime} - ${rule.endTime}",
-                            modifier = Modifier.weight(1f),
-                            fontSize = 9.sp
-                        )
-                        IconButton(onClick = {
-                            val updatedRules = scheduleRules.filter { it.id != rule.id }
-                            val ruleStrings = updatedRules.map { r -> ruleToString(r) }.toSet()
-                            schedulePrefs.edit().putStringSet("rules", ruleStrings).apply()
-                            scheduleRules = updatedRules
-                        }) {
-                            Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.settings_delete_rule))
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 0.dp, vertical = 4.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 10.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "${rule.days.joinToString(", ")}: ${rule.startTime} - ${rule.endTime}",
+                                modifier = Modifier.weight(1f),
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                            IconButton(
+                                onClick = {
+                                    val updatedRules = scheduleRules.filter { it.id != rule.id }
+                                    val ruleStrings = updatedRules.map { r -> ruleToString(r) }.toSet()
+                                    schedulePrefs.edit().putStringSet("rules", ruleStrings).apply()
+                                    scheduleRules = updatedRules
+                                },
+                                modifier = Modifier.size(32.dp)
+                            ) {
+                                Icon(
+                                    Icons.Default.Delete,
+                                    contentDescription = stringResource(R.string.settings_delete_rule),
+                                    tint = MaterialTheme.colorScheme.secondary,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                            }
                         }
                     }
                 }
 
                 item {
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     Button(
                         onClick = onNavigateToAddSchedule,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp)
                     ) {
+                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
                         Text(stringResource(R.string.settings_add_schedule))
                     }
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
+
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+        }
+    }
+}
+
+@Composable
+private fun SectionCard(content: @Composable () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            content()
         }
     }
 }

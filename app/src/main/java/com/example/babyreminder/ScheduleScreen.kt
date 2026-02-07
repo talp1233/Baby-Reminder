@@ -11,11 +11,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +29,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TimePicker
 import androidx.compose.material3.TimePickerDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.text.SimpleDateFormat
@@ -62,14 +68,23 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.settings_add_schedule_title), fontSize = 18.sp) },
+                title = {
+                    Text(
+                        stringResource(R.string.settings_add_schedule_title),
+                        fontWeight = FontWeight.SemiBold
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button_description))
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                )
             )
-        }
+        },
+        containerColor = MaterialTheme.colorScheme.background
     ) {
         Column(
             modifier = Modifier
@@ -78,64 +93,106 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(stringResource(R.string.settings_select_days), style = MaterialTheme.typography.titleSmall)
-            Spacer(modifier = Modifier.height(8.dp))
-            
-            // Days in two rows
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    days.take(4).forEach { day ->
-                        FilterChip(
-                            selected = day in selectedDays,
-                            onClick = {
-                                selectedDays = if (day in selectedDays) {
-                                    selectedDays - day
-                                } else {
-                                    selectedDays + day
-                                }
-                            },
-                            label = { Text(day, fontSize = 12.sp) }
-                        )
+            // Days card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        stringResource(R.string.settings_select_days),
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        days.take(4).forEach { day ->
+                            FilterChip(
+                                selected = day in selectedDays,
+                                onClick = {
+                                    selectedDays = if (day in selectedDays) selectedDays - day else selectedDays + day
+                                },
+                                label = { Text(day, fontSize = 12.sp) },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                            )
+                        }
                     }
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    days.drop(4).forEach { day ->
-                        FilterChip(
-                            selected = day in selectedDays,
-                            onClick = {
-                                selectedDays = if (day in selectedDays) {
-                                    selectedDays - day
-                                } else {
-                                    selectedDays + day
-                                }
-                            },
-                            label = { Text(day, fontSize = 12.sp) }
-                        )
+                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        days.drop(4).forEach { day ->
+                            FilterChip(
+                                selected = day in selectedDays,
+                                onClick = {
+                                    selectedDays = if (day in selectedDays) selectedDays - day else selectedDays + day
+                                },
+                                label = { Text(day, fontSize = 12.sp) },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                            )
+                        }
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            Text(stringResource(R.string.settings_select_time_range), style = MaterialTheme.typography.titleSmall)
-            Row(
+            // Time range card
+            Card(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
             ) {
-                TextButton(onClick = { showStartTimePicker = true }) {
-                    Text(formatTime(startTimeState.hour, startTimeState.minute, is24HourFormat), fontSize = 16.sp)
-                }
-                Text("-")
-                TextButton(onClick = { showEndTimePicker = true }) {
-                     Text(formatTime(endTimeState.hour, endTimeState.minute, is24HourFormat), fontSize = 16.sp)
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        stringResource(R.string.settings_select_time_range),
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        TextButton(onClick = { showStartTimePicker = true }) {
+                            Text(
+                                formatTime(startTimeState.hour, startTimeState.minute, is24HourFormat),
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Medium,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                        Text("—", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        TextButton(onClick = { showEndTimePicker = true }) {
+                            Text(
+                                formatTime(endTimeState.hour, endTimeState.minute, is24HourFormat),
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Medium,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                    }
                 }
             }
 
             Spacer(modifier = Modifier.weight(1f))
 
             Button(
-                onClick = { 
+                onClick = {
                     if (selectedDays.isNotEmpty()) {
                         val newRule = ScheduleRule(
                             id = UUID.randomUUID().toString(),
@@ -149,10 +206,14 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
                         onNavigateBack()
                     }
                 },
-                enabled = selectedDays.isNotEmpty()
+                enabled = selectedDays.isNotEmpty(),
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
             ) {
                 Text(stringResource(R.string.settings_save_schedule))
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 
@@ -179,16 +240,19 @@ fun ScheduleScreen(onNavigateBack: () -> Unit) {
 
 @Composable
 private fun TimePickerDialog(onDismiss: () -> Unit, onConfirm: () -> Unit, title: String, content: @Composable () -> Unit) {
-    androidx.compose.ui.window.Dialog(
-        onDismissRequest = onDismiss,
-    ) {
+    androidx.compose.ui.window.Dialog(onDismissRequest = onDismiss) {
         androidx.compose.material3.Surface(
             shape = MaterialTheme.shapes.large
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(text = title, style = MaterialTheme.typography.labelMedium, modifier = Modifier.padding(16.dp))
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(16.dp)
+                )
                 content()
-                Row(modifier = Modifier.fillMaxWidth()) {
+                Row(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
                     Spacer(modifier = Modifier.weight(1f))
                     TextButton(onClick = onDismiss) { Text(stringResource(R.string.settings_cancel)) }
                     Spacer(modifier = Modifier.width(8.dp))

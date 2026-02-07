@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Recordatorio de bebé</string>
+    <string name="app_name">Baby Reminder</string>
 
     <!-- Splash Screen -->
-    <string name="splash_tagline">Protegiendo a tus peque\u00f1os</string>
+    <string name="splash_tagline">Cuidamos la seguridad de tus peque\u00f1os</string>
 
     <!-- Main Screen -->
-    <string name="driving_status">Estado de conducción</string>
-    <string name="driving_status_active">Activo</string>
-    <string name="driving_status_inactive">Inactivo</string>
-    <string name="bluetooth_list_prompt">agregue los nombres de bluetooth de su automóvil\npara ayudarnos a detectar que está conduciendo</string>
-    <string name="bluetooth_list_button">Lista de Bluetooth</string>
-    <string name="legal_button">Legal</string>
-    <string name="contact_us">Contáctenos:</string>
-    <string name="select_language">Seleccionar idioma</string>
+    <string name="driving_status">Estado del viaje</string>
+    <string name="driving_status_active">En camino</string>
+    <string name="driving_status_inactive">Detenido</string>
+    <string name="bluetooth_list_prompt">A\u00f1ade el nombre Bluetooth de tu coche\npara que podamos detectar cu\u00e1ndo conduces</string>
+    <string name="bluetooth_list_button">Dispositivos Bluetooth</string>
+    <string name="legal_button">Informaci\u00f3n legal</string>
+    <string name="contact_us">Cont\u00e1ctanos:</string>
+    <string name="select_language">Elegir idioma</string>
 
     <!-- Bluetooth Devices Screen -->
     <string name="bluetooth_devices_title">Dispositivos Bluetooth</string>
-    <string name="add_bluetooth_device_label">Agregar nombre de dispositivo bluetooth</string>
-    <string name="add_button">Agregar</string>
-    <string name="back_button_description">Atrás</string>
-    <string name="remove_device_description">Quitar dispositivo</string>
+    <string name="add_bluetooth_device_label">Nombre del dispositivo Bluetooth</string>
+    <string name="add_button">A\u00f1adir</string>
+    <string name="back_button_description">Volver</string>
+    <string name="remove_device_description">Eliminar dispositivo</string>
 
     <!-- Legal Screen -->
-    <string name="legal_title">Legal</string>
-    <string name="terms_of_use_button">Términos de uso</string>
-    <string name="privacy_policy_button">Política de privacidad</string>
-    <string name="disclaimer_button">Descargo de responsabilidad</string>
+    <string name="legal_title">Informaci\u00f3n legal</string>
+    <string name="terms_of_use_button">Condiciones de uso</string>
+    <string name="privacy_policy_button">Pol\u00edtica de privacidad</string>
+    <string name="disclaimer_button">Aviso legal</string>
 
     <!-- Legal Details Screens -->
-    <string name="terms_of_use_title">Términos de uso</string>
-    <string name="privacy_policy_title">Política de privacidad</string>
-    <string name="disclaimer_title">Descargo de responsabilidad</string>
-    <string name="terms_of_use_content">La información sobre los términos de uso estará aquí.</string>
-    <string name="privacy_policy_content">La información de la política de privacidad estará aquí.</string>
-    <string name="disclaimer_content">La información de exención de responsabilidad estará aquí.</string>
+    <string name="terms_of_use_title">Condiciones de uso</string>
+    <string name="privacy_policy_title">Pol\u00edtica de privacidad</string>
+    <string name="disclaimer_title">Aviso legal</string>
+    <string name="terms_of_use_content">Las condiciones de uso se mostrar\u00e1n aqu\u00ed.</string>
+    <string name="privacy_policy_content">La pol\u00edtica de privacidad se mostrar\u00e1 aqu\u00ed.</string>
+    <string name="disclaimer_content">El aviso legal se mostrar\u00e1 aqu\u00ed.</string>
 
     <!-- Notifications -->
-    <string name="start_driving_notification_title">¿Están los niños en el coche?</string>
-    <string name="start_driving_notification_text">Seleccione una respuesta o la aplicación cambiará a la acción predeterminada.</string>
-    <string name="end_driving_notification_title">¿Sacaste a los niños del coche?</string>
-    <string name="notification_action_yes">Sí, los niños están en el coche</string>
+    <string name="start_driving_notification_title">\u00bfHay ni\u00f1os en el coche?</string>
+    <string name="start_driving_notification_text">Elige una respuesta o se aplicar\u00e1 la acci\u00f3n predeterminada.</string>
+    <string name="end_driving_notification_title">\u00bfHas sacado a los ni\u00f1os del coche?</string>
+    <string name="notification_action_yes">S\u00ed, hay ni\u00f1os en el coche</string>
     <string name="notification_action_no">No</string>
-    <string name="notification_action_confirm_yes">Sí</string>
+    <string name="notification_action_confirm_yes">S\u00ed</string>
 
     <!-- Settings Screen -->
-    <string name="settings_title">Configuración</string>
-    <string name="settings_enable_sound">Activar sonidos de notificaciones</string>
-    <string name="settings_default_action_prompt">¿Cuál quieres que sea la acción predeterminada si no respondes a la primera alerta?</string>
-    <string name="settings_scheduled_times_title">Horarios programados para \"Sí\"</string>
-    <string name="settings_delete_rule">Eliminar regla</string>
-    <string name="settings_add_schedule">Agregar horario programado</string>
-    <string name="settings_add_schedule_title">Agregar horario</string>
-    <string name="settings_select_days">Seleccionar días:</string>
-    <string name="settings_select_time_range">Seleccionar rango de tiempo:</string>
-    <string name="settings_save_schedule">Guardar horario</string>
-    <string name="settings_start_time">Hora de inicio</string>
-    <string name="settings_end_time">Hora de fin</string>
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_enable_sound">Sonidos de notificaciones</string>
+    <string name="settings_default_action_prompt">\u00bfQu\u00e9 ocurre si no respondes a la primera alerta?</string>
+    <string name="settings_scheduled_times_title">Horarios en los que el valor predeterminado es \"S\u00ed\"</string>
+    <string name="settings_delete_rule">Eliminar</string>
+    <string name="settings_add_schedule">A\u00f1adir horario</string>
+    <string name="settings_add_schedule_title">Nuevo horario</string>
+    <string name="settings_select_days">Elegir d\u00edas:</string>
+    <string name="settings_select_time_range">Elegir franja horaria:</string>
+    <string name="settings_save_schedule">Guardar</string>
+    <string name="settings_start_time">Desde</string>
+    <string name="settings_end_time">Hasta</string>
     <string name="settings_cancel">Cancelar</string>
     <string name="settings_ok">Aceptar</string>
 
     <!-- Permissions -->
     <string name="permission_needed">Se requiere permiso</string>
-    <string name="permission_needed_text">Toque para permitir recordatorios repetidos.</string>
-    <string name="permission_needed_big_text">Para asegurarse de que los recordatorios funcionen correctamente, la aplicación necesita el permiso de \'Alarmas y recordatorios\'. Toque aquí para abrir la configuración.</string>
+    <string name="permission_needed_text">Pulsa para permitir recordatorios repetidos.</string>
+    <string name="permission_needed_big_text">Para que los recordatorios funcionen correctamente, la app necesita el permiso de \u00abAlarmas y recordatorios\u00bb. Pulsa aqu\u00ed para abrir los ajustes.</string>
 
 </resources>
