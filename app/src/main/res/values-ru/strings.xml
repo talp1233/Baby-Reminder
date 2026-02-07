@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Напоминание о ребенке</string>
+    <string name="app_name">Baby Reminder</string>
 
     <!-- Splash Screen -->
-    <string name="splash_tagline">Безопасность ваших малышей</string>
+    <string name="splash_tagline">Заботимся о безопасности ваших малышей</string>
 
     <!-- Main Screen -->
-    <string name="driving_status">Статус вождения</string>
-    <string name="driving_status_active">Активно</string>
-    <string name="driving_status_inactive">Неактивно</string>
-    <string name="bluetooth_list_prompt">пожалуйста, добавьте имена Bluetooth вашего автомобиля,\nчтобы помочь нам обнаружить, что вы за рулем</string>
-    <string name="bluetooth_list_button">Список Bluetooth</string>
-    <string name="legal_button">Юридическая информация</string>
-    <string name="contact_us">Свяжитесь с нами:</string>
-    <string name="select_language">Выберите язык</string>
+    <string name="driving_status">Статус поездки</string>
+    <string name="driving_status_active">В пути</string>
+    <string name="driving_status_inactive">На месте</string>
+    <string name="bluetooth_list_prompt">Добавьте название Bluetooth вашего автомобиля,\nчтобы мы могли определить начало поездки</string>
+    <string name="bluetooth_list_button">Устройства Bluetooth</string>
+    <string name="legal_button">Правовая информация</string>
+    <string name="contact_us">Связаться с нами:</string>
+    <string name="select_language">Выбор языка</string>
 
     <!-- Bluetooth Devices Screen -->
     <string name="bluetooth_devices_title">Устройства Bluetooth</string>
-    <string name="add_bluetooth_device_label">Добавить имя устройства Bluetooth</string>
+    <string name="add_bluetooth_device_label">Название устройства Bluetooth</string>
     <string name="add_button">Добавить</string>
     <string name="back_button_description">Назад</string>
     <string name="remove_device_description">Удалить устройство</string>
 
     <!-- Legal Screen -->
-    <string name="legal_title">Юридическая информация</string>
+    <string name="legal_title">Правовая информация</string>
     <string name="terms_of_use_button">Условия использования</string>
     <string name="privacy_policy_button">Политика конфиденциальности</string>
     <string name="disclaimer_button">Отказ от ответственности</string>
@@ -32,37 +32,37 @@
     <string name="terms_of_use_title">Условия использования</string>
     <string name="privacy_policy_title">Политика конфиденциальности</string>
     <string name="disclaimer_title">Отказ от ответственности</string>
-    <string name="terms_of_use_content">Информация об условиях использования будет здесь.</string>
-    <string name="privacy_policy_content">Информация о политике конфиденциальности будет здесь.</string>
-    <string name="disclaimer_content">Информация об отказе от ответственности будет здесь.</string>
+    <string name="terms_of_use_content">Условия использования будут размещены здесь.</string>
+    <string name="privacy_policy_content">Политика конфиденциальности будет размещена здесь.</string>
+    <string name="disclaimer_content">Отказ от ответственности будет размещён здесь.</string>
 
     <!-- Notifications -->
     <string name="start_driving_notification_title">Дети в машине?</string>
-    <string name="start_driving_notification_text">Выберите ответ, или приложение переключится на действие по умолчанию.</string>
-    <string name="end_driving_notification_title">Вы вытащили детей из машины?</string>
+    <string name="start_driving_notification_text">Выберите ответ, иначе сработает действие по умолчанию.</string>
+    <string name="end_driving_notification_title">Вы забрали детей из машины?</string>
     <string name="notification_action_yes">Да, дети в машине</string>
     <string name="notification_action_no">Нет</string>
     <string name="notification_action_confirm_yes">Да</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Настройки</string>
-    <string name="settings_enable_sound">Включить звуки уведомлений</string>
-    <string name="settings_default_action_prompt">Какое действие по умолчанию вы хотите, если не ответите на первое оповещение?</string>
-    <string name="settings_scheduled_times_title">Запланированное время для \"Да\"</string>
-    <string name="settings_delete_rule">Удалить правило</string>
-    <string name="settings_add_schedule">Добавить запланированное время</string>
+    <string name="settings_enable_sound">Звуки уведомлений</string>
+    <string name="settings_default_action_prompt">Что произойдёт, если вы не ответите на первое уведомление?</string>
+    <string name="settings_scheduled_times_title">Время, когда по умолчанию — \"Да\"</string>
+    <string name="settings_delete_rule">Удалить</string>
+    <string name="settings_add_schedule">Добавить время</string>
     <string name="settings_add_schedule_title">Добавить расписание</string>
-    <string name="settings_select_days">Выберите дни:</string>
-    <string name="settings_select_time_range">Выберите диапазон времени:</string>
-    <string name="settings_save_schedule">Сохранить расписание</string>
-    <string name="settings_start_time">Время начала</string>
-    <string name="settings_end_time">Время окончания</string>
+    <string name="settings_select_days">Выбрать дни:</string>
+    <string name="settings_select_time_range">Выбрать временной промежуток:</string>
+    <string name="settings_save_schedule">Сохранить</string>
+    <string name="settings_start_time">Начало</string>
+    <string name="settings_end_time">Окончание</string>
     <string name="settings_cancel">Отмена</string>
     <string name="settings_ok">ОК</string>
 
     <!-- Permissions -->
     <string name="permission_needed">Требуется разрешение</string>
-    <string name="permission_needed_text">Нажмите, чтобы разрешить повторяющиеся напоминания.</string>
-    <string name="permission_needed_big_text">Чтобы напоминания работали правильно, приложению требуется разрешение \'Будильники и напоминания\'. Нажмите здесь, чтобы открыть настройки.</string>
+    <string name="permission_needed_text">Нажмите, чтобы разрешить повторные напоминания.</string>
+    <string name="permission_needed_big_text">Для корректной работы напоминаний приложению необходимо разрешение «Будильники и напоминания». Нажмите здесь, чтобы открыть настройки.</string>
 
 </resources>

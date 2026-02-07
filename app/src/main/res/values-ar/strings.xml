@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">تذكير الطفل</string>
+    <string name="app_name">Baby Reminder</string>
 
     <!-- Splash Screen -->
-    <string name="splash_tagline">الحفاظ على سلامة أطفالكم الصغار</string>
+    <string name="splash_tagline">نحرص على سلامة صغاركم</string>
 
     <!-- Main Screen -->
     <string name="driving_status">حالة القيادة</string>
-    <string name="driving_status_active">نشط</string>
-    <string name="driving_status_inactive">غير نشط</string>
-    <string name="bluetooth_list_prompt">يرجى إضافة أسماء بلوتوث سيارتك\nلمساعدتنا في اكتشاف قيادتك للسيارة</string>
-    <string name="bluetooth_list_button">قائمة البلوتوث</string>
-    <string name="legal_button">قانوني</string>
-    <string name="contact_us">اتصل بنا:</string>
-    <string name="select_language">اختار اللغة</string>
+    <string name="driving_status_active">قيد القيادة</string>
+    <string name="driving_status_inactive">متوقف</string>
+    <string name="bluetooth_list_prompt">أضف اسم البلوتوث الخاص بسيارتك\nحتى نتمكّن من معرفة أنك تقود</string>
+    <string name="bluetooth_list_button">أجهزة البلوتوث</string>
+    <string name="legal_button">الشؤون القانونية</string>
+    <string name="contact_us">تواصل معنا:</string>
+    <string name="select_language">اختيار اللغة</string>
 
     <!-- Bluetooth Devices Screen -->
     <string name="bluetooth_devices_title">أجهزة البلوتوث</string>
-    <string name="add_bluetooth_device_label">أضف اسم جهاز بلوتوث</string>
-    <string name="add_button">أضف</string>
-    <string name="back_button_description">خلف</string>
-    <string name="remove_device_description">إزالة الجهاز</string>
+    <string name="add_bluetooth_device_label">اسم جهاز البلوتوث</string>
+    <string name="add_button">إضافة</string>
+    <string name="back_button_description">رجوع</string>
+    <string name="remove_device_description">حذف الجهاز</string>
 
     <!-- Legal Screen -->
-    <string name="legal_title">قانوني</string>
+    <string name="legal_title">الشؤون القانونية</string>
     <string name="terms_of_use_button">شروط الاستخدام</string>
     <string name="privacy_policy_button">سياسة الخصوصية</string>
-    <string name="disclaimer_button">تنصل</string>
+    <string name="disclaimer_button">إخلاء المسؤولية</string>
 
     <!-- Legal Details Screens -->
     <string name="terms_of_use_title">شروط الاستخدام</string>
     <string name="privacy_policy_title">سياسة الخصوصية</string>
-    <string name="disclaimer_title">تنصل</string>
-    <string name="terms_of_use_content">ستكون معلومات شروط الاستخدام هنا.</string>
-    <string name="privacy_policy_content">ستكون معلومات سياسة الخصوصية هنا.</string>
-    <string name="disclaimer_content">ستكون معلومات إخلاء المسؤولية هنا.</string>
+    <string name="disclaimer_title">إخلاء المسؤولية</string>
+    <string name="terms_of_use_content">ستُعرض شروط الاستخدام هنا.</string>
+    <string name="privacy_policy_content">ستُعرض سياسة الخصوصية هنا.</string>
+    <string name="disclaimer_content">سيُعرض إخلاء المسؤولية هنا.</string>
 
     <!-- Notifications -->
-    <string name="start_driving_notification_title">هل الأطفال في السيارة؟</string>
-    <string name="start_driving_notification_text">حدد إجابة أو سيتحول التطبيق إلى الإجراء الافتراضي.</string>
-    <string name="end_driving_notification_title">هل أخرجت الأطفال من السيارة؟</string>
-    <string name="notification_action_yes">نعم، الأطفال في السيارة</string>
+    <string name="start_driving_notification_title">هل يوجد أطفال في السيارة؟</string>
+    <string name="start_driving_notification_text">اختر إجابة، وإلا سيتم تطبيق الإعداد التلقائي.</string>
+    <string name="end_driving_notification_title">هل أنزلت الأطفال من السيارة؟</string>
+    <string name="notification_action_yes">نعم، يوجد أطفال في السيارة</string>
     <string name="notification_action_no">لا</string>
     <string name="notification_action_confirm_yes">نعم</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">الإعدادات</string>
-    <string name="settings_enable_sound">تفعيل أصوات الإشعارات</string>
-    <string name="settings_default_action_prompt">ما الإجراء الافتراضي الذي تريده إذا لم ترد على التنبيه الأول؟</string>
-    <string name="settings_scheduled_times_title">الأوقات المجدولة لـ \"نعم\"</string>
-    <string name="settings_delete_rule">حذف القاعدة</string>
-    <string name="settings_add_schedule">إضافة وقت مجدول</string>
-    <string name="settings_add_schedule_title">إضافة جدول</string>
-    <string name="settings_select_days">اختر الأيام:</string>
-    <string name="settings_select_time_range">اختر نطاق الوقت:</string>
-    <string name="settings_save_schedule">حفظ الجدول</string>
-    <string name="settings_start_time">وقت البدء</string>
-    <string name="settings_end_time">وقت الانتهاء</string>
+    <string name="settings_enable_sound">أصوات الإشعارات</string>
+    <string name="settings_default_action_prompt">ماذا يحدث إذا لم تردّ على التنبيه الأول؟</string>
+    <string name="settings_scheduled_times_title">الأوقات التي يكون فيها الافتراضي \"نعم\"</string>
+    <string name="settings_delete_rule">حذف</string>
+    <string name="settings_add_schedule">إضافة وقت</string>
+    <string name="settings_add_schedule_title">إضافة جدول زمني</string>
+    <string name="settings_select_days">اختيار الأيام:</string>
+    <string name="settings_select_time_range">اختيار الفترة الزمنية:</string>
+    <string name="settings_save_schedule">حفظ</string>
+    <string name="settings_start_time">من الساعة</string>
+    <string name="settings_end_time">حتى الساعة</string>
     <string name="settings_cancel">إلغاء</string>
     <string name="settings_ok">موافق</string>
 
     <!-- Permissions -->
-    <string name="permission_needed">الإذن مطلوب</string>
-    <string name="permission_needed_text">انقر للسماح بالتذكيرات المتكررة.</string>
-    <string name="permission_needed_big_text">لضمان عمل التذكيرات بشكل صحيح، يحتاج التطبيق إلى إذن \"الإنذارات والتذكيرات\". انقر هنا لفتح الإعدادات.</string>
+    <string name="permission_needed">مطلوب إذن</string>
+    <string name="permission_needed_text">اضغط للسماح بالتذكيرات المتكررة.</string>
+    <string name="permission_needed_big_text">لضمان عمل التذكيرات بشكل صحيح، يحتاج التطبيق إلى إذن \"المنبهات والتذكيرات\". اضغط هنا لفتح الإعدادات.</string>
 
 </resources>
