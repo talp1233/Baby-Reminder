@@ -18,7 +18,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.Gavel
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
@@ -37,7 +39,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalUriHandler
@@ -114,27 +115,32 @@ fun MainScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Status indicator circle with gradient
-        val activeGradient = Brush.radialGradient(
-            colors = listOf(Color(0xFFFF9800), Color(0xFFF57C00))
-        )
-        val inactiveGradient = Brush.radialGradient(
-            colors = listOf(Color(0xFF81C784), Color(0xFF4CAF50))
-        )
+        // Status indicator with icon
+        val statusColor = if (isDriving) Color(0xFF9E9E9E) else MaterialTheme.colorScheme.primary
+        val statusIcon = if (isDriving) Icons.Default.DirectionsCar else Icons.Default.Home
 
         Box(
             modifier = Modifier
                 .size(180.dp)
                 .clip(CircleShape)
-                .background(if (isDriving) activeGradient else inactiveGradient),
+                .background(statusColor.copy(alpha = 0.12f)),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = if (isDriving) stringResource(id = R.string.driving_status_active) else stringResource(id = R.string.driving_status_inactive),
-                color = Color.White,
-                fontSize = 26.sp,
-                fontWeight = FontWeight.Bold
-            )
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(
+                    statusIcon,
+                    contentDescription = null,
+                    modifier = Modifier.size(72.dp),
+                    tint = statusColor
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = if (isDriving) stringResource(id = R.string.driving_status_active) else stringResource(id = R.string.driving_status_inactive),
+                    color = statusColor,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))

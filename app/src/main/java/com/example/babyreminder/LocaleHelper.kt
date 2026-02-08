@@ -3,6 +3,9 @@ package com.example.babyreminder
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import java.util.Locale
 
 object LocaleHelper {
@@ -12,7 +15,7 @@ object LocaleHelper {
     // Apply the saved locale to the context
     fun onAttach(context: Context): Context {
         val lang = getPersistedData(context, Locale.getDefault().language)
-        return setLocale(context, lang)
+        return updateResources(context, lang)
     }
 
     // Get the currently saved language code
@@ -23,6 +26,13 @@ object LocaleHelper {
     // Set the new locale and persist it
     fun setLocale(context: Context, language: String?): Context {
         persist(context, language)
+
+        // Use AppCompatDelegate for API 33+ per-app language support
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val localeList = LocaleListCompat.forLanguageTags(language ?: "en")
+            AppCompatDelegate.setApplicationLocales(localeList)
+        }
+
         return updateResources(context, language)
     }
 
@@ -45,6 +55,7 @@ object LocaleHelper {
 
         val config = Configuration(context.resources.configuration)
         config.setLocale(locale)
+        config.setLayoutDirection(locale)
         return context.createConfigurationContext(config)
     }
 
