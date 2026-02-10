@@ -20,6 +20,7 @@ import com.example.babyreminder.ui.theme.BabyReminderTheme
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drivingStateDetector: DrivingStateDetector
+    private var isRecreating = false
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase))
@@ -40,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         drivingStateDetector = (application as BabyReminderApplication).drivingStateDetector
         checkNotificationPermission()
 
+        // Skip splash screen if we're recreating after a language change
+        val skipSplash = savedInstanceState != null || isRecreating
+        val startRoute = if (skipSplash) "main" else "splash"
+
         enableEdgeToEdge()
         setContent {
             BabyReminderTheme {
@@ -48,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 val deviceNames by drivingStateDetector.carBluetoothDeviceNames.collectAsState()
                 val currentLanguage = LocaleHelper.getLanguage(this)
 
-                NavHost(navController = navController, startDestination = "splash") {
+                NavHost(navController = navController, startDestination = startRoute) {
                     composable("splash") {
                         SplashScreen(
                             onSplashComplete = {
@@ -62,9 +67,13 @@ class MainActivity : AppCompatActivity() {
                         MainScreen(
                             isDriving = isDriving,
                             currentLanguageCode = currentLanguage ?: "en",
-                            onLanguageSelected = {
-                                LocaleHelper.setLocale(this@MainActivity, it)
-                                this@MainActivity.recreate()
+                            onLanguageSelected = { lang ->
+                                LocaleHelper.setLocale(this@MainActivity, lang)
+                                // On API < 33, AppCompatDelegate doesn't auto-recreate
+                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                                    isRecreating = true
+                                    this@MainActivity.recreate()
+                                }
                             },
                             onNavigateToLegal = { navController.navigate("legal") },
                             onNavigateToSettings = { navController.navigate("settings") }
