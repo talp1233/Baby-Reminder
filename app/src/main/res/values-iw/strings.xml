@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Baby Reminder</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_tagline">שומרים על הקטנטנים שלכם</string>
+
+    <!-- Main Screen -->
+    <string name="driving_status">סטטוס נסיעה</string>
+    <string name="driving_status_active">בנסיעה</string>
+    <string name="driving_status_inactive">לא בנסיעה</string>
+    <string name="bluetooth_list_prompt">הוסיפו את שם הבלוטות\' של הרכב שלכם\nכדי שנזהה מתי אתם נוסעים</string>
+    <string name="bluetooth_list_button">רשימת בלוטות\'</string>
+    <string name="legal_button">מידע משפטי</string>
+    <string name="contact_us">יצירת קשר:</string>
+    <string name="select_language">בחירת שפה</string>
+
+    <!-- Bluetooth Devices Screen -->
+    <string name="bluetooth_devices_title">מכשירי בלוטות\'</string>
+    <string name="add_bluetooth_device_label">שם מכשיר בלוטות\'</string>
+    <string name="add_button">הוספה</string>
+    <string name="back_button_description">חזרה</string>
+    <string name="remove_device_description">הסרת מכשיר</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">מידע משפטי</string>
+    <string name="terms_of_use_button">תנאי שימוש</string>
+    <string name="privacy_policy_button">מדיניות פרטיות</string>
+    <string name="disclaimer_button">הבהרה משפטית</string>
+
+    <!-- Legal Details Screens -->
+    <string name="terms_of_use_title">תנאי שימוש</string>
+    <string name="privacy_policy_title">מדיניות פרטיות</string>
+    <string name="disclaimer_title">הבהרה משפטית</string>
+    <string name="terms_of_use_content">תנאי השימוש יופיעו כאן.</string>
+    <string name="privacy_policy_content">מדיניות הפרטיות תופיע כאן.</string>
+    <string name="disclaimer_content">ההבהרה המשפטית תופיע כאן.</string>
+
+    <!-- Notifications -->
+    <string name="start_driving_notification_title">יש ילדים ברכב?</string>
+    <string name="start_driving_notification_text">בחרו תשובה, אחרת האפליקציה תפעל לפי ברירת המחדל.</string>
+    <string name="end_driving_notification_title">הוצאתם את הילדים מהרכב?</string>
+    <string name="notification_action_yes">כן, יש ילדים ברכב</string>
+    <string name="notification_action_no">לא</string>
+    <string name="notification_action_confirm_yes">כן</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">הגדרות</string>
+    <string name="settings_enable_sound">צלילי התראות</string>
+    <string name="settings_default_action_prompt">מה יקרה אם לא תגיבו להתראה הראשונה?</string>
+    <string name="settings_scheduled_times_title">שעות בהן ברירת המחדל היא \"כן\"</string>
+    <string name="settings_delete_rule">מחיקת כלל</string>
+    <string name="settings_add_schedule">הוספת שעות</string>
+    <string name="settings_add_schedule_title">הוספת לוח זמנים</string>
+    <string name="settings_select_days">בחירת ימים:</string>
+    <string name="settings_select_time_range">בחירת טווח שעות:</string>
+    <string name="settings_save_schedule">שמירה</string>
+    <string name="settings_start_time">שעת התחלה</string>
+    <string name="settings_end_time">שעת סיום</string>
+    <string name="settings_cancel">ביטול</string>
+    <string name="settings_ok">אישור</string>
+
+    <!-- Permissions -->
+    <string name="permission_needed">נדרשת הרשאה</string>
+    <string name="permission_needed_text">לחצו כדי לאפשר תזכורות חוזרות.</string>
+    <string name="permission_needed_big_text">כדי שהתזכורות יפעלו כמו שצריך, האפליקציה צריכה הרשאת \'התראות ותזכורות\'. לחצו כאן כדי לפתוח את ההגדרות.</string>
+
+</resources>

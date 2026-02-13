@@ -12,28 +12,37 @@ object LocaleHelper {
 
     private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
 
+    // Java Locale converts "he" to "iw" internally. We normalize to "he" for consistency.
+    private fun normalizeLanguageCode(code: String?): String? {
+        return when (code) {
+            "iw" -> "he"
+            else -> code
+        }
+    }
+
     // Apply the saved locale to the context
     fun onAttach(context: Context): Context {
-        val lang = getPersistedData(context, Locale.getDefault().language)
+        val lang = normalizeLanguageCode(getPersistedData(context, Locale.getDefault().language))
         return updateResources(context, lang)
     }
 
     // Get the currently saved language code
     fun getLanguage(context: Context): String? {
-        return getPersistedData(context, Locale.getDefault().language)
+        return normalizeLanguageCode(getPersistedData(context, Locale.getDefault().language))
     }
 
     // Set the new locale and persist it
     fun setLocale(context: Context, language: String?): Context {
-        persist(context, language)
+        val lang = normalizeLanguageCode(language)
+        persist(context, lang)
 
         // Use AppCompatDelegate for API 33+ per-app language support
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val localeList = LocaleListCompat.forLanguageTags(language ?: "en")
+            val localeList = LocaleListCompat.forLanguageTags(lang ?: "en")
             AppCompatDelegate.setApplicationLocales(localeList)
         }
 
-        return updateResources(context, language)
+        return updateResources(context, lang)
     }
 
     private fun getPersistedData(context: Context, defaultLanguage: String): String? {
@@ -50,7 +59,8 @@ object LocaleHelper {
 
     // Update the app's resources to reflect the new language
     private fun updateResources(context: Context, language: String?): Context {
-        val locale = Locale(language ?: Locale.getDefault().language)
+        val langCode = language ?: Locale.getDefault().language
+        val locale = Locale(langCode)
         Locale.setDefault(locale)
 
         val config = Configuration(context.resources.configuration)
